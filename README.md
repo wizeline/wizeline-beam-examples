@@ -5,19 +5,20 @@
 ```mvn clean install -X    ```
 
 #### To compile + deploy (DirectRunner)
-
+```
 mvn compile -X exec:java \                                                                                    
 -Dexec.mainClass=com.wizeline.examples.LosAngelesPgSqlToBigQuery \
 -Dexec.args="--runner=DirectRunner \
---project=apache-beam-poc-4a7e4215 \
+--project=<<your_project_id>> \
 --region=us-central1 \
---gcpTempLocation=gs://gcp-beam-hassan-test/temp/ \
+--gcpTempLocation=gs://<<your_biucket>>/temp/ \
 --username=postgres \
 --password=password \
 --hostname=127.0.0.1 \
 --port=5432 \
---serviceAccount=gcp-beam-poc-hassan@apache-beam-poc-4a7e4215.iam.gserviceaccount.com \
---outputTable=apache-beam-poc-4a7e4215:google_beam_poc.merged_orders \
---bigQueryLoadingTemporaryDirectory=gs://gcp-beam-hassan-test/temp/ \
+--serviceAccount=<<your_service_account>> \
+--outputTable=<<project_id>>:<<dataset>>.<<table>> \
+--bigQueryLoadingTemporaryDirectory=gs://<<your_bucket>>/temp/ \
 --defaultWorkerLogLevel=DEBUG"
+```
 
